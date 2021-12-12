@@ -1,0 +1,3 @@
+"D:\Program Files\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\FireScript.dir/objects.a
+X:\Mingw\mingw64\bin\ar.exe cr CMakeFiles\FireScript.dir/objects.a @CMakeFiles\FireScript.dir\objects1.rsp
+X:\Mingw\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\FireScript.dir/objects.a -Wl,--no-whole-archive -o FireScript.exe -Wl,--out-implib,libFireScript.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\FireScript.dir\linklibs.rsp

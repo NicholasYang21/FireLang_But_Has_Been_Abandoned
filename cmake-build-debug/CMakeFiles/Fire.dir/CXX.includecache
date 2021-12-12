@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+P:/FireScript/Sources/fLib/global-functions.h
+windows.h
+-
+iostream
+-
+string
+-
+vector
+-
+
+P:/FireScript/fMain.cpp
+Sources/fLib/global-functions.h
+P:/FireScript/Sources/fLib/global-functions.h
+fstream
+-
+
