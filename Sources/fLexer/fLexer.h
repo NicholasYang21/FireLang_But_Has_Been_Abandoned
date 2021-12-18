@@ -5,6 +5,7 @@
 #define FIRESCRIPT_FLEXER_H
 
 #include <string>
+#include <set>
 #include <iostream>
 
 namespace fLexer {
@@ -16,11 +17,11 @@ enum Property {
 
   // Arithmetic Operators
 
-    // 10-Based
+    // Decimal
     // +, -, *, /, %
   Add, Sub, Mul, Div, Mod,
 
-    // 2-Based (Bit Operation)
+    // Binary (Bit Operation)
     // ~, &, |, ^, <<, >>, >>> (Right Arithmetic Shift)
   Not, And, Or, Xor, Lsh, Rsh, RAsh,
 
@@ -37,8 +38,16 @@ enum Property {
   LNot, Eq, Ne, LAnd, LOr, Le, Ge, Les, Gr,
 
   // Access Operators
-  // ., ->
-  Dot, Arrow,
+  // .
+  Dot,
+
+  // Type cast
+  // ->
+  Arrow,
+
+  // Assign
+  // =
+  Assign,
 
   // Other Operators
   // ( ) [ ] { }
@@ -47,10 +56,11 @@ enum Property {
   Colon, Semicolon, Comma,
 
   // Identifiers
-  EOF_, Unknown, Error, Keyword
+  EOF_, Unknown, Error, Keyword, Comment
 };
 
-extern std::string Properties[54];
+extern std::string Properties[57];
+extern std::set<std::string> Keywords;
 
 struct Token {
   Property propertie;
@@ -65,9 +75,10 @@ class Lexer {
  public:
 
   explicit Lexer(std::istream& stm) :
-    in_stm {stm} { line = col = 1; };
+    in_stm {stm} { line = col = 1; last_col = 0; };
 
   char Read();
+  void Back(char);
   Token Automata();
 
   std::istream& in_stm;
@@ -79,14 +90,14 @@ class Lexer {
   Token Hex();
   Token Number();
   Token Identifier();
-  Token Char();
-  Token String();
-  Token Comment();
+  Token Char_();
+  Token String_();
+  Token Comment_();
   Token LineComment();
   Token BlockComment();
   Token Symbol();
 
-  static unsigned line, col;
+  unsigned line, col, last_col;
 };
 
 } // namespace fLexer

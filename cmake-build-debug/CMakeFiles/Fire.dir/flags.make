@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -O3 -Wall -g -std=gnu++2a
+CXX_FLAGS = -O3 -DNDEBUG -Wall -O2 -g -std=gnu++2a
 

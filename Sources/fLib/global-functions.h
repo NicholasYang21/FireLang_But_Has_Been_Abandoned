@@ -5,16 +5,19 @@
 #if defined(_WIN32) || defined(_WIN64)
 
 extern bool DEBUGGING;
-extern unsigned BUILD_VER;
+extern const char* BUILD_VER;
+
+#include "../fLexer/fLexer.h"
 
 // winAPI
 #include <windows.h>
 
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
 
-#define DATE std::string("2021/12/11")
+#define DATE std::string("2021/12/12s")
 
 enum COLORS {
   RED = FOREGROUND_RED,

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Fire.dir/Sources/fLexer/fLexer.cc.obj"
   "CMakeFiles/Fire.dir/Sources/fLib/global-functions.cc.obj"
+  "CMakeFiles/Fire.dir/Sources/fParser/fParser.cc.obj"
   "CMakeFiles/Fire.dir/fMain.cpp.obj"
   "Fire.exe"
   "Fire.exe.manifest"

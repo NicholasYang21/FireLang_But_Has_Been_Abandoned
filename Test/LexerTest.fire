@@ -1,0 +1,23 @@
+/*
+ * This file is a test file
+ * Version 1.0
+ * For Fire Lexer
+ */
+
+import stdio;
+
+use scope stdio.console;
+
+fn none main() {
+    console.writeln("Hello world!");
+
+    // A + B Problem
+    integer a, b;
+    console.write("Input A: ");
+    a = console.read() -> integer;
+    console.writeln();
+    console.write("Input B: ");
+    b = console.read() -> integer;
+
+    console.writeln("A + B = " + a + b);
+}

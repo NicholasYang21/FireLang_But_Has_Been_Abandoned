@@ -176,6 +176,30 @@ Sources/fLib/global-functions.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fLib/global-functions.cc.s
 .PHONY : Sources/fLib/global-functions.cc.s
 
+Sources/fParser/fParser.obj: Sources/fParser/fParser.cc.obj
+.PHONY : Sources/fParser/fParser.obj
+
+# target to build an object file
+Sources/fParser/fParser.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/fParser.cc.obj
+.PHONY : Sources/fParser/fParser.cc.obj
+
+Sources/fParser/fParser.i: Sources/fParser/fParser.cc.i
+.PHONY : Sources/fParser/fParser.i
+
+# target to preprocess a source file
+Sources/fParser/fParser.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/fParser.cc.i
+.PHONY : Sources/fParser/fParser.cc.i
+
+Sources/fParser/fParser.s: Sources/fParser/fParser.cc.s
+.PHONY : Sources/fParser/fParser.s
+
+# target to generate assembly for a file
+Sources/fParser/fParser.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/fParser.cc.s
+.PHONY : Sources/fParser/fParser.cc.s
+
 fMain.obj: fMain.cpp.obj
 .PHONY : fMain.obj
 
@@ -215,6 +239,9 @@ help:
 	@echo ... Sources/fLib/global-functions.obj
 	@echo ... Sources/fLib/global-functions.i
 	@echo ... Sources/fLib/global-functions.s
+	@echo ... Sources/fParser/fParser.obj
+	@echo ... Sources/fParser/fParser.i
+	@echo ... Sources/fParser/fParser.s
 	@echo ... fMain.obj
 	@echo ... fMain.i
 	@echo ... fMain.s

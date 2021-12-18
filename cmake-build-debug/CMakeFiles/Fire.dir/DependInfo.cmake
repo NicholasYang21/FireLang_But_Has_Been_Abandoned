@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "P:/FireScript/Sources/fLexer/fLexer.cc" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fLexer/fLexer.cc.obj"
   "P:/FireScript/Sources/fLib/global-functions.cc" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fLib/global-functions.cc.obj"
+  "P:/FireScript/Sources/fParser/fParser.cc" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fParser/fParser.cc.obj"
   "P:/FireScript/fMain.cpp" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/fMain.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

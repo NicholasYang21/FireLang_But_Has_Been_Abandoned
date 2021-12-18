@@ -92,6 +92,12 @@
 		<Unit filename="P:/FireScript/Sources/fLib/global-functions.h">
 			<Option target="Fire"/>
 		</Unit>
+		<Unit filename="P:/FireScript/Sources/fParser/fParser.cc">
+			<Option target="Fire"/>
+		</Unit>
+		<Unit filename="P:/FireScript/Sources/fParser/fParser.h">
+			<Option target="Fire"/>
+		</Unit>
 		<Unit filename="P:/FireScript/fMain.cpp">
 			<Option target="Fire"/>
 		</Unit>

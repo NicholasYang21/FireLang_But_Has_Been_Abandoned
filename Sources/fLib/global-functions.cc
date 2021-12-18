@@ -7,11 +7,10 @@ void global::Log(std::ostream& s, const std::string& content, int level, bool UI
   if (DEBUGGING || UI) {
     if (level == 0) SetColor(8);
     else if (level == 1) SetColor(YELLOW);
-    else
-      SetColor(RED);
+    else SetColor(RED);
 
     s << content << std::endl;
-    SetColor(WHITE);
+    SetColor(7);
   } else return;
 }
 
@@ -40,7 +39,7 @@ void global::ProcessParams(int argc, char** argv) {
   "   -d, --debug        Use debug module (not debugger)\n"
   "   -v, --version      Look up the version of fire\n"
   "   -? | -h, --help    Display this message\n";
-  std::string version = "Fire version 0.0.1 alpha [build " + std::to_string(BUILD_VER) + "]";
+  std::string version = "Fire version 0.0.1 alpha [build " + std::string(BUILD_VER) + "]";
 
   using std::cout;
 
@@ -67,9 +66,7 @@ void global::ProcessParams(int argc, char** argv) {
         else {
           cout << version; exit(0);
         }
-      }
-
-      if (argv[i][0] == '-' && argv[i][1] == '-') {
+      } else if (argv[i][0] == '-' && argv[i][1] == '-') {
         bool flag = LinearFind(argv[i], 2);
 
         if (!flag) {
@@ -87,6 +84,23 @@ void global::ProcessParams(int argc, char** argv) {
         else {
           cout << version; exit(0);
         }
+      } else {
+        std::fstream file(argv[i]);
+
+        using fLexer::Lexer;
+        using fLexer::Token;
+        Lexer lexer(file);
+
+        if (DEBUGGING) {
+          Log(std::cout, "Lexer:");
+          Token tok;
+          while (tok.propertie != fLexer::EOF_) {
+            tok = lexer.Automata();
+            Log(std::cout, "  TOKEN: " + tok.ToString());
+          }
+        }
+
+        lexer.Automata();
       }
     }
   }
