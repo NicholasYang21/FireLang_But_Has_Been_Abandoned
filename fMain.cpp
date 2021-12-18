@@ -3,7 +3,7 @@
 //#define BUILDING
 
 bool DEBUGGING = false;
-const char* BUILD_VER = "d856b2b";
+const char* BUILD_VER = "5d10b0b";
 
 int main(int argc, char** argv) {
 
