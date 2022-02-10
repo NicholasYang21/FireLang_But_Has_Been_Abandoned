@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "D:\Program Files\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "G:\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "D:\Program Files\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "G:\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = P:\FireScript
+CMAKE_SOURCE_DIR = G:\FireScript
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = P:\FireScript\cmake-build-debug
+CMAKE_BINARY_DIR = G:\FireScript\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = P:\FireScript\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"D:\Program Files\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"G:\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"D:\Program Files\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"G:\CLion 2021.1.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start P:\FireScript\cmake-build-debug\CMakeFiles P:\FireScript\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\FireScript\cmake-build-debug\CMakeFiles G:\FireScript\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start P:\FireScript\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start G:\FireScript\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -176,6 +176,54 @@ Sources/fLib/global-functions.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fLib/global-functions.cc.s
 .PHONY : Sources/fLib/global-functions.cc.s
 
+Sources/fParser/AST.obj: Sources/fParser/AST.cc.obj
+.PHONY : Sources/fParser/AST.obj
+
+# target to build an object file
+Sources/fParser/AST.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/AST.cc.obj
+.PHONY : Sources/fParser/AST.cc.obj
+
+Sources/fParser/AST.i: Sources/fParser/AST.cc.i
+.PHONY : Sources/fParser/AST.i
+
+# target to preprocess a source file
+Sources/fParser/AST.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/AST.cc.i
+.PHONY : Sources/fParser/AST.cc.i
+
+Sources/fParser/AST.s: Sources/fParser/AST.cc.s
+.PHONY : Sources/fParser/AST.s
+
+# target to generate assembly for a file
+Sources/fParser/AST.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/AST.cc.s
+.PHONY : Sources/fParser/AST.cc.s
+
+Sources/fParser/Symbol.obj: Sources/fParser/Symbol.cc.obj
+.PHONY : Sources/fParser/Symbol.obj
+
+# target to build an object file
+Sources/fParser/Symbol.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/Symbol.cc.obj
+.PHONY : Sources/fParser/Symbol.cc.obj
+
+Sources/fParser/Symbol.i: Sources/fParser/Symbol.cc.i
+.PHONY : Sources/fParser/Symbol.i
+
+# target to preprocess a source file
+Sources/fParser/Symbol.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/Symbol.cc.i
+.PHONY : Sources/fParser/Symbol.cc.i
+
+Sources/fParser/Symbol.s: Sources/fParser/Symbol.cc.s
+.PHONY : Sources/fParser/Symbol.s
+
+# target to generate assembly for a file
+Sources/fParser/Symbol.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Fire.dir\build.make CMakeFiles/Fire.dir/Sources/fParser/Symbol.cc.s
+.PHONY : Sources/fParser/Symbol.cc.s
+
 Sources/fParser/fParser.obj: Sources/fParser/fParser.cc.obj
 .PHONY : Sources/fParser/fParser.obj
 
@@ -239,6 +287,12 @@ help:
 	@echo ... Sources/fLib/global-functions.obj
 	@echo ... Sources/fLib/global-functions.i
 	@echo ... Sources/fLib/global-functions.s
+	@echo ... Sources/fParser/AST.obj
+	@echo ... Sources/fParser/AST.i
+	@echo ... Sources/fParser/AST.s
+	@echo ... Sources/fParser/Symbol.obj
+	@echo ... Sources/fParser/Symbol.i
+	@echo ... Sources/fParser/Symbol.s
 	@echo ... Sources/fParser/fParser.obj
 	@echo ... Sources/fParser/fParser.i
 	@echo ... Sources/fParser/fParser.s

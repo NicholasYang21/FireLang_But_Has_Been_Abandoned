@@ -7,4 +7,4 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_RELEASE} -Wall -O2")
 set(CMAKE_EXE_LINKER_FLAGS "-static")
 
-add_executable(Fire fMain.cpp Sources/fLib/global-functions.h Sources/fLib/global-functions.cc Sources/fLexer/fLexer.h Sources/fLexer/fLexer.cc Sources/fParser/fParser.cc Sources/fParser/fParser.h)
+add_executable(Fire fMain.cc Sources/fLib/global-functions.cc Sources/fLexer/fLexer.cc)

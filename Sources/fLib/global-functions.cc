@@ -1,33 +1,36 @@
 // This file is a part of FireScript.
 // Copyright (c) 2021, Ink. All rights reserved.
 
-#include "global-functions.h"
+#include "global-functions.hpp"
 
-void global::Log(std::ostream& s, const std::string& content, int level, bool UI) {
+void global::Log(std::ostream& s, const std::string& content, int level, bool endl, bool UI) {
   if (DEBUGGING || UI) {
     if (level == 0) SetColor(8);
     else if (level == 1) SetColor(YELLOW);
     else SetColor(RED);
 
-    s << content << std::endl;
+    s << content;
+    if (endl)
+      s << std::endl;
+
     SetColor(7);
   } else return;
 }
 
 void global::ProcessParams(int argc, char** argv) {
-  std::vector<const char*> commands = {"-d", "-v", "-?", "-h"};
-  std::vector<const char*> command_full_name = {"--debug", "--version", "--help"};
+  std::vector commands = {"-d", "-v", "-?", "-h"};
+  std::vector command_full_name = {"--debug", "--version", "--help"};
 
   auto LinearFind = [commands, command_full_name](const char* key, int type) -> bool {
     if (type == 1)
-      for (size_t i = 0; i < commands.size(); ++i) {
-        if (!strcmp(commands[i], key))
+      for (auto command : commands) {
+        if (!strcmp(command, key))
           return true;
       }
 
     else
-      for (size_t i = 0; i < command_full_name.size(); ++i)
-        if (!strcmp(command_full_name[i], key))
+      for (auto i : command_full_name)
+        if (!strcmp(i, key))
           return true;
 
     return false;
@@ -92,15 +95,30 @@ void global::ProcessParams(int argc, char** argv) {
         Lexer lexer(file);
 
         if (DEBUGGING) {
-          Log(std::cout, "Lexer:");
+          Log(std::cout, "Lexer: ", 0, false);
           Token tok;
-          while (tok.propertie != fLexer::EOF_) {
-            tok = lexer.Automata();
-            Log(std::cout, "  TOKEN: " + tok.ToString());
-          }
-        }
+          std::vector<Token> group;
 
-        lexer.Automata();
+          while (tok.property != fLexer::EOF_) {
+            tok = lexer.Automata();
+            group.push_back(tok);
+          }
+
+          if (group.empty()) {
+            Log(std::cout, "[]");
+            continue;
+          }
+
+          Log(std::cout, "[", 0, false);
+
+          for (size_t idx = 0; idx < group.size() - 1; ++idx) {
+            Log(std::cout, group.at(idx).ToString() + ", ", 0, false);
+          }
+
+          Log(std::cout, group.at(group.size() - 1).ToString(), 0, false);
+
+          Log(std::cout, "]");
+        }
       }
     }
   }

@@ -1,12 +1,12 @@
 // This file is a part of FireScript.
 // Copyright (c) 2021, Ink. All rights reserved.
 
-#include "fLexer.h"
-#include "../fLib/global-functions.h"
+#include "fLexer.hpp"
+#include "../fLib/global-functions.hpp"
 
 namespace fLexer {
 
-std::string Properties[57] {
+std::string Properties[57] { // NOLINT
     // Basic types
     // [Id], 123, 12.3, 'a', "abc"
     "Id", "Int", "Float", "Char", "String",
@@ -52,10 +52,10 @@ std::string Properties[57] {
     "Colon", "Semicolon", "Comma",
 
     // Identifiers
-    "EOF_", "Unknown", "Error", "Keyword", "Comment"
+    "EOF_", "Unknown", "Keyword", "Comment"
 };
 
-std::set<std::string> Keywords{
+std::set<std::string> Keywords{ // NOLINT
   "integer",
   "char",
   "string",
@@ -90,13 +90,21 @@ std::set<std::string> Keywords{
   "scope"
 };
 
-std::string Token::ToString() {
-  return "<" + Properties[this->propertie] + ", \'" + this->text + "\' Line " +
-         std::to_string(this->line) + " Col " + std::to_string(this->col) + ">";
+// CHANGED: Change to JSON-style.
+std::string Token::ToString() const {
+  return R"({ "type": ")" + Properties[this->property] + R"(", "value": ")" + this->text + R"(", "line": )" +
+         std::to_string(this->line) + R"(, "col": )" + std::to_string(this->col) + " }";
 }
 
 char Lexer::Read() {
-  char ret = this->in_stm.get();
+
+  if (!in_stm) {
+    global::Log(std::cout, "Error: ", 2, false);
+    global::Log(std::cout, "No such file or directory.");
+    exit(0);
+  }
+
+  char ret = static_cast<char>(this->in_stm.get());
 
   if (ret == '\n')
     line++, last_col = col, col = 1;
@@ -166,8 +174,7 @@ Token Lexer::Start() {
   char ch = Read();
 
   if (ch == '\0' || in_stm.eof()) {
-    return {EOF_, "\0", line, col};
-    exit(0);
+    return {EOF_, "\0", line, col}; // NOLINT
   } else if (ch == '0')
     return OctHex();
   else if (ch >= '1' && ch <= '9') {
@@ -229,7 +236,7 @@ Token Lexer::Hex() {
 }
 
 Token Lexer::Number() {
-  char ch; std::string num = "";
+  char ch; std::string num;
   int dot = 0;
 
   while (ch = Read(), (isdigit(ch) || (ch == '.' && dot == 0)) && (!in_stm.eof())) {
@@ -246,7 +253,7 @@ Token Lexer::Number() {
 }
 
 Token Lexer::Identifier() {
-  char ch; std::string id = "";
+  char ch; std::string id;
 
   while (ch = Read(), (ch == '_' || isalpha(ch)) && (!in_stm.eof())) {
     id += ch;
@@ -258,7 +265,7 @@ Token Lexer::Identifier() {
 }
 
 Token Lexer::Char_() {
-  char ch; std::string char_ = "";
+  char ch; std::string char_;
 
   while (ch = Read(), ch != '\'' && (!in_stm.eof())) {
     char_ += ch;
@@ -268,7 +275,7 @@ Token Lexer::Char_() {
 }
 
 Token Lexer::String_() {
-  char ch; std::string str = "";
+  char ch; std::string str;
 
   while (ch = Read(), ch != '\"' && (!in_stm.eof())) {
     str += ch;
@@ -293,17 +300,17 @@ Token Lexer::LineComment() {
 }
 
 Token Lexer::BlockComment() {
-  unsigned firstline = line, firstcol = col - 2;
+  unsigned first_line = line, first_col = col - 2;
   char ch = Read(), last;
 
   while (last = ch, ch = Read(), (ch != '/' && last != '*') || (!in_stm.eof())) {
     if (ch == '/' && last == '*') break;
 
     if (in_stm.eof()) {
-      global::Log(std::cout, "unexcepted EOF:", 2, true);
+      global::Log(std::cout, "unexpected EOF:", 2, true);
       global::Log(std::cout, "  No '*/' to match '/*'", 2, true);
-      global::Log(std::cout, "At Line " + std::to_string(firstline) + " Col " +
-                  std::to_string(firstcol), 2, true);
+      global::Log(std::cout, "At Line " + std::to_string(first_line) + " Col " +
+                  std::to_string(first_col), 2, true);
       exit(-1);
     }
   }

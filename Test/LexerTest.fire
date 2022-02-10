@@ -6,18 +6,16 @@
 
 import stdio;
 
-use scope stdio.console;
+use stdio.console;
 
 fn none main() {
-    console.writeln("Hello world!");
-
-    // A + B Problem
     integer a, b;
-    console.write("Input A: ");
-    a = console.read() -> integer;
-    console.writeln();
-    console.write("Input B: ");
-    b = console.read() -> integer;
 
-    console.writeln("A + B = " + a + b);
+    console.write("Input A: ");
+    a = parseInteger(console.read());
+
+    console.write("Input B: ");
+    b = parseInteger(console.read());
+
+    console.fwrite("A + B = {0}", (a + b));
 }

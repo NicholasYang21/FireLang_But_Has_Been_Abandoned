@@ -1,8 +1,8 @@
 // This file is a part of FireScript.
 // Copyright (c) 2021, Ink. All rights reserved.
 
-#ifndef FIRESCRIPT_FLEXER_H
-#define FIRESCRIPT_FLEXER_H
+#ifndef FIRESCRIPT_FLEXER_HPP
+#define FIRESCRIPT_FLEXER_HPP
 
 #include <string>
 #include <set>
@@ -56,19 +56,19 @@ enum Property {
   Colon, Semicolon, Comma,
 
   // Identifiers
-  EOF_, Unknown, Error, Keyword, Comment
+  EOF_, Unknown, Keyword, Comment
 };
 
 extern std::string Properties[57];
 extern std::set<std::string> Keywords;
 
 struct Token {
-  Property propertie;
+  Property property;
   std::string text;
 
   unsigned line, col;
 
-  std::string ToString();
+  [[nodiscard]] std::string ToString() const;
 };
 
 class Lexer {
@@ -102,4 +102,4 @@ class Lexer {
 
 } // namespace fLexer
 
-#endif // FIRESCRIPT_FLEXER_H
+#endif // FIRESCRIPT_FLEXER_HPP

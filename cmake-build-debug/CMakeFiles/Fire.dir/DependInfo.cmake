@@ -8,10 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "P:/FireScript/Sources/fLexer/fLexer.cc" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fLexer/fLexer.cc.obj"
-  "P:/FireScript/Sources/fLib/global-functions.cc" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fLib/global-functions.cc.obj"
-  "P:/FireScript/Sources/fParser/fParser.cc" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fParser/fParser.cc.obj"
-  "P:/FireScript/fMain.cpp" "P:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/fMain.cpp.obj"
+  "G:/FireScript/Sources/fLexer/fLexer.cc" "G:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fLexer/fLexer.cc.obj"
+  "G:/FireScript/Sources/fLib/global-functions.cc" "G:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fLib/global-functions.cc.obj"
+  "G:/FireScript/Sources/fParser/AST.cc" "G:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fParser/AST.cc.obj"
+  "G:/FireScript/Sources/fParser/Symbol.cc" "G:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fParser/Symbol.cc.obj"
+  "G:/FireScript/Sources/fParser/fParser.cc" "G:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/Sources/fParser/fParser.cc.obj"
+  "G:/FireScript/fMain.cpp" "G:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir/fMain.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

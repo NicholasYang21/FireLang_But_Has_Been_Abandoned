@@ -1,23 +1,21 @@
 // This file is a part of FireScript.
 // Copyright (c) 2021, Ink. All rights reserved.
 
-// color table
-#if defined(_WIN32) || defined(_WIN64)
-
 extern bool DEBUGGING;
 extern const char* BUILD_VER;
-
-#include "../fLexer/fLexer.h"
-
-// winAPI
-#include <windows.h>
 
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
 
-#define DATE std::string("2021/12/12s")
+// color table
+#if defined(_WIN32) || defined(_WIN64)
+
+#include "../fLexer/fLexer.hpp"
+
+// winAPI
+#include <windows.h>
 
 enum COLORS {
   RED = FOREGROUND_RED,
@@ -41,7 +39,7 @@ enum COLORS {
 };
 
 #define SetColor(C) SetConsoleTextAttribute( \
-  GetStdHandle(STD_OUTPUT_HANDLE), (DWORD)C)
+  GetStdHandle(STD_OUTPUT_HANDLE), (DWORD)(C))
 
 #else
 
@@ -72,7 +70,10 @@ namespace global {
 // Level = 0: info
 // Level = 1: Warning
 // Level >= 2: Error
-void Log(std::ostream& s, const std::string& content, int level = 0, bool UI = false);
+void Log(
+         std::ostream& s, const std::string& content, int level = 0, bool endl = true,
+         bool UI = false
+        );
 
 void ProcessParams(int argc, char** argv);
 
