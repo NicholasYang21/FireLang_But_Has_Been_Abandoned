@@ -1,7 +1,7 @@
 // This file is a part of FireScript.
 // Copyright (c) 2021, Ink. All rights reserved.
 
-#include "Symbol.h"
+#include "Symbol.hpp"
 #include "../fLib/global-functions.hpp"
 
 NormalEnv::NormalEnv(NormalEnv *prev) {

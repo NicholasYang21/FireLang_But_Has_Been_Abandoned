@@ -1,8 +1,8 @@
 // This file is a part of FireScript.
 // Copyright (c) 2021, Ink. All rights reserved.
 
-#ifndef FIRESCRIPT_SYMBOL_H
-#define FIRESCRIPT_SYMBOL_H
+#ifndef FIRESCRIPT_SYMBOL_HPP
+#define FIRESCRIPT_SYMBOL_HPP
 
 #include "../fLexer/fLexer.hpp"
 
@@ -23,4 +23,4 @@ class NormalEnv {
   void AddSymbol(const std::string&, const std::string&, const std::string&);
 };
 
-#endif // FIRESCRIPT_SYMBOL_H
+#endif // FIRESCRIPT_SYMBOL_HPP

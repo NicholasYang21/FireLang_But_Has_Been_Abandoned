@@ -1,8 +1,8 @@
 // This file is a part of FireScript.
 // Copyright (c) 2021, Ink. All rights reserved.
 
-#ifndef FIRESCRIPT_AST_H
-#define FIRESCRIPT_AST_H
+#ifndef FIRESCRIPT_AST_HPP
+#define FIRESCRIPT_AST_HPP
 
 #include "../fLexer/fLexer.hpp"
 
@@ -41,4 +41,4 @@ class Arith : public Node {
 
 } // namespace ast
 
-#endif // FIRESCRIPT_AST_H
+#endif // FIRESCRIPT_AST_HPP
