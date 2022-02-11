@@ -8,6 +8,7 @@
 
 #include "../fLib/global-functions.hpp"
 
+#include <utility>
 #include <vector>
 
 namespace ast {
@@ -16,27 +17,24 @@ using fLexer::Token;
 
 class Node {
  public:
-  enum tp { _node = 0, _leaf } nodetype;
-  Token type;
-  std::vector<Node> subs;
+  enum { _node = 0, _leaf } nodetype;
+  /**
+   * The type of this tree (expression or statement):
+   *    Block, Statements, Null Statement
+   */
+  enum { Block, Stmt, Null, Value,  } stmt_type;
 
-  Node() : nodetype{_leaf}, type{fLexer::Unknown} {};
+  Token tok;
 
-  Node(Token tok, tp type_) : nodetype{type_}, type{tok} {}
 
-  void print(int depth) {
-    global::Log(std::cout, "{");
-    global::Log(std::cout, R"(  "nodetype": )", 0, false);
-    nodetype == _leaf ? global::Log(std::cout, R"("leaf")")
-                      : global::Log(std::cout, R"("node")");
-    global::Log(std::cout, R"(  "type": )" + type.ToString());
-    if (nodetype == _leaf) {}
-  }
-};
+  std::vector<Node> sub_nodes;
 
-class Arith : public Node {
- public:
-  Node left, right;
+  Node() : nodetype{_leaf}, stmt_type{Null}, tok{fLexer::Unknown} {};
+
+  Node(decltype(nodetype) ty, decltype(stmt_type) tr, Token t) : nodetype{ty}, stmt_type{tr},
+                                                                 tok{std::move(t)} { }
+
+  void print(int depth) const;
 };
 
 } // namespace ast

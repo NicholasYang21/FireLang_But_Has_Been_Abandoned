@@ -1,3 +1,3 @@
 ## Fire Programming Language
 
-An 
+An Object-Oriented Programming Language
