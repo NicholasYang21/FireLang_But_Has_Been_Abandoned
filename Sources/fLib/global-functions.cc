@@ -42,7 +42,7 @@ void global::ProcessParams(int argc, char** argv) {
   "   -d, --debug        Use debug module (not debugger)\n"
   "   -v, --version      Look up the version of fire\n"
   "   -? | -h, --help    Display this message\n";
-  std::string version = "Fire version 0.0.1 alpha [build " + std::string(BUILD_VER) + "]";
+  std::string version = "FireLang Core 0.0.1 alpha [build " + std::string(BUILD_VER) + "]";
 
   using std::cout;
 
@@ -109,13 +109,11 @@ void global::ProcessParams(int argc, char** argv) {
             continue;
           }
 
-          Log(std::cout, "[", 0, false);
+          Log(std::cout, "[", 0);
 
-          for (size_t idx = 0; idx < group.size() - 1; ++idx) {
-            Log(std::cout, group.at(idx).ToString() + ", ", 0, false);
+          for (auto & idx : group) {
+            Log(std::cout, "  " + idx.ToString() + ", ", 0);
           }
-
-          Log(std::cout, group.at(group.size() - 1).ToString(), 0, false);
 
           Log(std::cout, "]");
         }

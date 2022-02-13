@@ -22,7 +22,7 @@ class Node {
    * The type of this tree (expression or statement):
    *    Block, Statements, Null Statement
    */
-  enum { Block, Stmt, Null, Value,  } stmt_type;
+  enum { Block, Stmt, Null, Value } stmt_type;
 
   Token tok;
 
@@ -34,7 +34,7 @@ class Node {
   Node(decltype(nodetype) ty, decltype(stmt_type) tr, Token t) : nodetype{ty}, stmt_type{tr},
                                                                  tok{std::move(t)} { }
 
-  void print(int depth) const;
+  void Print(int depth = 2) const;
 };
 
 } // namespace ast

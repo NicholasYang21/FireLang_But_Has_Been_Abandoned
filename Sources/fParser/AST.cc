@@ -5,9 +5,10 @@
 
 namespace ast {
 
-void Node::print(int depth) const {
-  global::Log(std::cout, "{");
-  global::Log(std::cout, std::string(depth, ' ') + R"("node_type": )", 0, false);
+void Node::Print(int depth) const {
+  global::Log(std::cout, std::string(depth - 2, ' ') + "{");
+  global::Log(std::cout, std::string(depth, ' ') + R"("node_type": )",
+              0, false);
 
   nodetype == _leaf ? global::Log(std::cout, R"("leaf")")
                     : global::Log(std::cout, R"("node")");
@@ -17,9 +18,14 @@ void Node::print(int depth) const {
   if (nodetype == _node) {
     global::Log(std::cout, std::string(depth, ' ') + R"("sub_nodes": [)");
     for (const auto& i : this->sub_nodes) {
-      i.print(depth + 2);
+      i.Print(depth + 2);
     }
+    global::Log(std::cout, std::string(depth, ' ') + "]");
   }
+
+  global::Log(std::cout, std::string(depth - 2, ' ') + "}");
 }
+
+
 
 } // namespace ast

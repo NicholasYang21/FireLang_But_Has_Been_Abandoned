@@ -86,7 +86,7 @@ std::set<std::string> Keywords{ // NOLINT
   "return",
 
   "import",
-  "use",
+  "unpack",
   "scope"
 };
 

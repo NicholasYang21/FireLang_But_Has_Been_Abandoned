@@ -1,12 +1,12 @@
 /*
- * This file is a test file
+ * This file is a test file.
  * Version 1.0
- * For Fire Lexer
+ * For Fire Lexer Scanning.
  */
 
 import stdio;
 
-use stdio.console;
+unpack stdio.console;
 
 fn none main() {
     integer a, b;
