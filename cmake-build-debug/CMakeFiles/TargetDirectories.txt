@@ -1,3 +1,0 @@
-G:/FireScript/cmake-build-debug/CMakeFiles/Fire.dir
-G:/FireScript/cmake-build-debug/CMakeFiles/edit_cache.dir
-G:/FireScript/cmake-build-debug/CMakeFiles/rebuild_cache.dir
