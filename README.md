@@ -2,7 +2,7 @@
 
 ---
 
-An _**compiled, Object-Oriented Programming**_ Language.
+A _**compiled, Object-Oriented Programming**_ Language.
 
 (Also known as _**Fire**_).
 
