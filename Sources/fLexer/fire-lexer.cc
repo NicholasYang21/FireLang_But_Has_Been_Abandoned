@@ -1,15 +1,35 @@
-// This file is a part of FireScript.
-// Copyright (c) 2021, Ink. All rights reserved.
+// This file is a part of FireLang.
+// Copyright (c) 2020-2022, Ink. All rights reserved.
+// License(MIT)
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+//
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "fLexer.hpp"
+#include "fire-lexer.hpp"
 #include "../fLib/global-functions.hpp"
 
 namespace fLexer {
 
-std::string Properties[57] { // NOLINT
+std::string Properties[58] { // NOLINT
     // Basic types
-    // [Id], 123, 12.3, 'a', "abc"
-    "Id", "Int", "Float", "Char", "String",
+    // [Id], 123, 12.3, 'a', "abc", true/false
+    "Id", "Int", "Float", "Char", "String", "Boolean",
 
     // Arithmetic Operators
 
@@ -60,6 +80,7 @@ std::set<std::string> Keywords{ // NOLINT
   "char",
   "string",
   "float",
+  "boolean",
   "none",
 
   "bool",
@@ -90,14 +111,13 @@ std::set<std::string> Keywords{ // NOLINT
   "scope"
 };
 
-// CHANGED: Change to JSON-style.
+// CHANGED: Change to the JSON-style.
 std::string Token::ToString() const {
   return R"({ "type": ")" + Properties[this->property] + R"(", "value": ")" + this->text + R"(", "line": )" +
          std::to_string(this->line) + R"(, "col": )" + std::to_string(this->col) + " }";
 }
 
 char Lexer::Read() {
-
   if (!in_stm) {
     global::Log(std::cout, "Error: ", 2, false);
     global::Log(std::cout, "No such file or directory.");

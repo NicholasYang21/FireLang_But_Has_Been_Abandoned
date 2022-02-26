@@ -12,7 +12,7 @@ extern const char* BUILD_VER;
 // color table
 #if defined(_WIN32) || defined(_WIN64)
 
-#include "../fLexer/fLexer.hpp"
+#include "../fLexer/fire-lexer.hpp"
 
 // winAPI
 #include <windows.h>
