@@ -13,7 +13,7 @@ This repo is under the MIT license.
 ---
 
 - [x] A basic lexer for Fire and it must work quickly, and it can give JSON outputs.
-- [ ] A parser for Fire and it can built good AST. It also can give JSON outputs.
+- [ ] A parser for Fire and it can built good AST. It can also give JSON outputs.
 - [ ] A VM for Fire and simply bytecode syntax. (Runtime environment)
 - [ ] Standard libraries (especially multi-thread).
 
