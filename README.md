@@ -1,4 +1,4 @@
-## Fire Programming Language
+### Fire Programming Language
 
 ---
 
@@ -8,7 +8,7 @@ A _**compiled, Object-Oriented Programming**_ Language.
 
 This repo is under the MIT license.
 
-## Author
+### Author
 
 ---
 
