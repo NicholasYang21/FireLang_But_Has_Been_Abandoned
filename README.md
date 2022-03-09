@@ -1,25 +1,40 @@
-### Fire Programming Language
+# Fire Programming Language
 
----
+_**Fire**_ is a compiled programming language that support _**Object Oriented Programming**_
 
-A _**compiled, Object-Oriented Programming**_ Language.
+The _**Fire Project**_ is an **Open Source** project. You can have it for **free**.
 
-(Also known as _**Fire**_).
+# Supports
 
-This repo is under the MIT license.
+- [x] Windows 32/64 bits
+- [x] Linux 32/64 bits
 
-### Planning
+# Planning
 
----
+### Compiler
 
-- [x] A basic lexer for Fire and it must work quickly, and it can give JSON outputs.
-- [ ] A parser for Fire and it can built good AST. It can also give JSON outputs.
-- [ ] A VM for Fire and simply bytecode syntax. (Runtime environment)
-- [ ] Standard libraries (especially multi-thread).
+- [x] ~~A lexer that is based on automata~~
+- [ ] A parser that can build good AST. It can also give JSON outputs.
+- [ ] A bytecode generator
+- [ ] Simply bytecode
+- [ ] An intepreter for bytecode
+- [ ] A **Virtual Machine**
+- [ ] **GC**
 
-### Author
+### Standard libraries
 
----
+- I/O library
+- String type
+- String builder
+- Mathematics
+- Containers
+- Random Engine
+- Algorithms
+- Multi-thread
+- Network
+- System call
+
+# Author
 
 Ink(NicholasYang21) attached to FireLang Development Team.
 
@@ -27,6 +42,6 @@ Optimizations by Ink(NicholasYang21), YongKang Zhou(xiaokang00010), nu11ptr(awat
 
 Copyright (c) 2020-2022, FireLang Development Team. All rights reserved.
 
-## Wiki
+# Wiki
 
 See also http://github.com/NicholasYang21/FireLang/wiki
