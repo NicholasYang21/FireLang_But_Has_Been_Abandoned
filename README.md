@@ -4,6 +4,8 @@ _**Fire**_ is a compiled programming language that supports _**Object Oriented P
 
 The _**Fire Project**_ is an **Open Source** project. You can have it for **free**.
 
+Developed by ![https://cdn.worldvectorlogo.com/logos/clion-2.svg]
+
 # Supports
 
 - [x] Windows 32/64 bits
