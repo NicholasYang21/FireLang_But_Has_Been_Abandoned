@@ -1,10 +1,8 @@
 # Fire Programming Language
 
-_**Fire**_ is a compiled programming language that supports _**Object Oriented Programming**_
+_**Fire**_ is a compiled programming language that supports _**Object Oriented Programming**_.
 
 The _**Fire Project**_ is an **Open Source** project. You can have it for **free**.
-
-Developed by ![](https://cdn.worldvectorlogo.com/logos/clion-2.svg)
 
 # Supports
 
