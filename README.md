@@ -1,6 +1,6 @@
 # Fire Programming Language
 
-_**Fire**_ is a compiled programming language that support _**Object Oriented Programming**_
+_**Fire**_ is a compiled programming language that supports _**Object Oriented Programming**_
 
 The _**Fire Project**_ is an **Open Source** project. You can have it for **free**.
 
@@ -36,9 +36,9 @@ The _**Fire Project**_ is an **Open Source** project. You can have it for **free
 
 # Author
 
-Ink(NicholasYang21) attached to FireLang Development Team.
+Ink (NicholasYang21) attached to FireLang Development Team.
 
-Optimizations by Ink(NicholasYang21), YongKang Zhou(xiaokang00010), nu11ptr(awathefox). 
+Optimizations by Ink (NicholasYang21), YongKang Zhou (xiaokang00010), nu11ptr (awathefox). 
 
 Copyright (c) 2020-2022, FireLang Development Team. All rights reserved.
 
