@@ -2,6 +2,7 @@
 // Copyright (c) 2021, Ink. All rights reserved.
 
 #include "global-functions.hpp"
+#include "fire-error.hpp"
 
 void global::Log(std::ostream& s, const std::string& content, int level, bool endl, bool UI) {
   if (DEBUGGING || UI) {
@@ -88,21 +89,27 @@ void global::ProcessParams(int argc, char** argv) {
           cout << version; exit(0);
         }
       } else {
-        std::fstream file(argv[i]);
 
-        using fLexer::Lexer;
-        using fLexer::Token;
-        Lexer lexer(file);
+        using flexer::Lexer;
+        using flexer::Token;
+
+        Lexer lexer(argv[i]);
 
         if (DEBUGGING) {
-          Log(std::cout, "Lexer: ", 0, false);
           Token tok;
           std::vector<Token> group;
 
-          while (tok.property != fLexer::EOF_) {
-            tok = lexer.Automata();
-            group.push_back(tok);
+          try {
+            while (tok.property != flexer::EOF_) {
+              tok = lexer.Automata();
+              group.push_back(tok);
+            }
+          } catch (FireError& e) {
+            Log(std::cerr, e.what(), 2, true, true);
+            exit(-1);
           }
+
+          Log(std::cout, "{\n\"Lexer_Output\": ", 0, false);
 
           if (group.empty()) {
             Log(std::cout, "[]");
@@ -111,11 +118,12 @@ void global::ProcessParams(int argc, char** argv) {
 
           Log(std::cout, "[", 0);
 
-          for (auto & idx : group) {
-            Log(std::cout, "  " + idx.ToString() + ", ", 0);
+          for (decltype(group.size()) j = 0; j < group.size() - 1; ++j) {
+            Log(std::cout, "  " + group[j].ToString() + ", ", 0);
           }
 
-          Log(std::cout, "]");
+          Log(std::cout, "  " + group.back().ToString(), 0);
+          Log(std::cout, "]\n}");
         }
       }
     }

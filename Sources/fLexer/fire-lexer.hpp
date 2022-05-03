@@ -26,9 +26,9 @@
 
 #include <string>
 #include <set>
-#include <iostream>
+#include <fstream>
 
-namespace fLexer {
+namespace flexer {
 
 enum Property {
   // Basic types
@@ -84,7 +84,7 @@ extern std::set<std::string> Keywords;
 
 struct Token {
   Property property;
-  std::string text;
+  std::string text, filename;
 
   unsigned line, col;
 
@@ -94,14 +94,14 @@ struct Token {
 class Lexer {
  public:
 
-  explicit Lexer(std::istream& stm) :
-    in_stm {stm} { line = col = 1; last_col = 0; };
+  explicit Lexer(const std::string& filename);
 
   char Read();
   void Back(char);
   Token Automata();
 
-  std::istream& in_stm;
+  std::ifstream in_stm;
+  std::string filename;
 
  private:
   Token Start();
@@ -120,6 +120,6 @@ class Lexer {
   unsigned line, col, last_col;
 };
 
-} // namespace fLexer
+} // namespace flexer
 
 #endif // FIRESCRIPT_FLEXER_HPP

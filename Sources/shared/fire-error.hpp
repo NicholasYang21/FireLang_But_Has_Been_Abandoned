@@ -1,5 +1,5 @@
 // This file is a part of FireLang.
-// Copyright (c) 2020-2022, Ink. All rights reserved.
+// Copyright (c) 2022, Ink. All rights reserved.
 // License(MIT)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -21,16 +21,23 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "Sources/shared/global-functions.hpp"
+#ifndef FIRELANG_FIRE_ERROR_HPP
+#define FIRELANG_FIRE_ERROR_HPP
 
-//#define BUILDING
+#include <exception>
 
-bool DEBUGGING = false;
-const char* BUILD_VER = "20220212";
+namespace global {
 
-int main(int argc, char** argv) {
+class FireError : public std::exception {
+ private:
+  const char* msg;
 
-  global::ProcessParams(argc, argv);
+ public:
+  explicit FireError(const char* msg) : msg{msg} {}
 
-  return 0;
-}
+  [[nodiscard]] const char* what() const noexcept override;
+};
+
+} // namespace global
+
+#endif // FIRELANG_FIRE_ERROR_HPP

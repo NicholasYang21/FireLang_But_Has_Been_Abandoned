@@ -6,7 +6,7 @@
 
 import stdio;
 
-unpack stdio.console;
+use stdio.console;
 
 fn none main() {
     integer a, b;
@@ -17,5 +17,5 @@ fn none main() {
     console.write("Input B: ");
     b = parseInteger(console.read());
 
-    console.fwrite("A + B = {0}", (a + b));
+    console.write("A + B = ", a + b);
 }

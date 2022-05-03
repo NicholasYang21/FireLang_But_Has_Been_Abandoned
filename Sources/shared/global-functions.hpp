@@ -9,10 +9,11 @@ extern const char* BUILD_VER;
 #include <string>
 #include <vector>
 
+#include "../fLexer/fire-lexer.hpp"
+#include "../fParser/AST/ast.hpp"
+
 // color table
 #if defined(_WIN32) || defined(_WIN64)
-
-#include "../fLexer/fire-lexer.hpp"
 
 // winAPI
 #include <windows.h>

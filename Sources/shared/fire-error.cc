@@ -1,5 +1,5 @@
 // This file is a part of FireLang.
-// Copyright (c) 2020-2022, Ink. All rights reserved.
+// Copyright (c) 2021-2022, Ink. All rights reserved.
 // License(MIT)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -21,25 +21,12 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef FIRELANG_AST_H
-#define FIRELANG_AST_H
+#include "fire-error.hpp"
 
-#include <string>
-#include <vector>
-#include <iterator>
+namespace global {
 
-namespace ast {
+const char* FireError::what() const noexcept {
+  return this->msg;
+}
 
-// An interface for ASTree
-class ASTree {
- public:
-  virtual ASTree GetChild(size_t i) = 0;
-  virtual size_t ChildrenNum() = 0;
-  virtual std::vector<ASTree>::iterator getIt() = 0;
-};
-
-
-
-} // namespace ast
-
-#endif // FIRELANG_AST_H
+} // namespace global
