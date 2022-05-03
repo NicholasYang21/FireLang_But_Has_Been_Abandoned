@@ -77,7 +77,7 @@ class FloatLiteral : public Leaf {
 
 class CharLiteral : public Leaf {
  public:
-  explicit CharLiteral(flexer::Token t);
+  explicit CharLiteral(const flexer::Token& t);
 
   char Value();
 };

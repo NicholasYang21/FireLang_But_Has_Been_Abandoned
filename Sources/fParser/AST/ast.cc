@@ -58,79 +58,90 @@ long double FloatLiteral::Value() noexcept {
   return std::stold(this->tok.text);
 }
 
-CharLiteral::CharLiteral(flexer::Token t) {
+CharLiteral::CharLiteral(const flexer::Token& t) {
+
   if (t.text.size() > 1) {
     using st = std::string::size_type;
-    for (st i = 0; i < t.text.size(); ++i) {
-      if (t.text[i] == '\\')
-        switch (t.text[++i]) {
+
+    std::string copied = t.text;
+
+    for (st i = 0; i < copied.size(); ++i) {
+      if (copied[i] == '\\')
+        switch (copied[++i]) {
           case 'n': {
-            t.text.replace(i - 1, 2, "\n");
+            copied.replace(i - 1, 2, "\n");
             break;
           }
 
           case 'r': {
-            t.text.replace(i - 1, 2, "\r");
+            copied.replace(i - 1, 2, "\r");
             break;
           }
 
           case 'b': {
-            t.text.replace(i - 1, 2, "\b");
+            copied.replace(i - 1, 2, "\b");
             break;
           }
 
           case 't': {
-            t.text.replace(i - 1, 2, "\t");
+            copied.replace(i - 1, 2, "\t");
             break;
           }
 
           case 'f': {
-            t.text.replace(i - 1, 2, "\f");
+            copied.replace(i - 1, 2, "\f");
             break;
           }
 
           case 'v': {
-            t.text.replace(i - 1, 2, "\v");
+            copied.replace(i - 1, 2, "\v");
             break;
           }
 
           case 'a': {
-            t.text.replace(i - 1, 2, "\a");
+            copied.replace(i - 1, 2, "\a");
             break;
           }
 
           case '0': {
-            t.text.replace(i - 1, 2, "\0");
+            copied.replace(i - 1, 2, "\0");
             break;
           }
 
           case '\\': {
-            t.text.replace(i - 1, 2, "\\");
+            copied.replace(i - 1, 2, "\\");
             break;
           }
 
           case '\'': {
-            t.text.replace(i - 1, 2, "\'");
+            copied.replace(i - 1, 2, "\'");
             break;
           }
 
           case '"': {
-            t.text.replace(i - 1, 2, "\"");
+            copied.replace(i - 1, 2, "\"");
             break;
           }
 
           case '?': {
-            t.text.replace(i - 1, 2, "\?");
+            copied.replace(i - 1, 2, "\?");
             break;
           }
         }
     }
 
-    if (t.text.size() > 1) {
-      std::string err = "Found an illegal character: \n  At " + t.filename +
+    if (copied.size() > 1) {
+      std::string s = "Found an illegal character: \n  At " + t.filename +
                         " Line " + std::to_string(t.line)
-                        + " Col " + std::to_string(t.col);
-      throw global::FireError(err.c_str());
+                        + " Col " + std::to_string(t.col) + "\n\n" + std::to_string(t.line) +
+                        " | ... '"
+                        + t.text + "' <-- There";
+
+
+      char* c = new char[strlen(s.c_str()) + 1];
+      strcpy(c, s.c_str());
+
+      throw global::FireError(c);
     }
   }
 

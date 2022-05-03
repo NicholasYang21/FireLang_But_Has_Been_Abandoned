@@ -22,6 +22,9 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "Sources/shared/global-functions.hpp"
+#include "Sources/shared/fire-error.hpp"
+
+#include "Sources/fParser/AST/ast.hpp"
 
 //#define BUILDING
 

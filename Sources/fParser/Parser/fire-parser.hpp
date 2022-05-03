@@ -26,6 +26,10 @@
 
 namespace fparser {
 
+class Parser {
+
+};
+
 } // namespace fparser
 
 #endif // FIRELANG_PARSER_HPP
