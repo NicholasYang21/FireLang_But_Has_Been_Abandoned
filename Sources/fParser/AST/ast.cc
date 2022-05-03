@@ -130,7 +130,6 @@ CharLiteral::CharLiteral(flexer::Token t) {
       std::string err = "Found an illegal character: \n  At " + t.filename +
                         " Line " + std::to_string(t.line)
                         + " Col " + std::to_string(t.col);
-      CharLiteral::~CharLiteral();
       throw global::FireError(err.c_str());
     }
   }
