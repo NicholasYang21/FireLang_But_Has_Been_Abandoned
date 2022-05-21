@@ -4,6 +4,8 @@
 #include "global-functions.hpp"
 #include "fire-error.hpp"
 
+#include "../../JSON/json.hpp"
+
 void global::Log(std::ostream& s, const std::string& content, int level, bool endl, bool UI) {
   if (DEBUGGING || UI) {
     if (level == 0) SetColor(8);
@@ -109,21 +111,13 @@ void global::ProcessParams(int argc, char** argv) {
             exit(-1);
           }
 
-          Log(std::cout, "{\n\"Lexer_Output\": ", 0, false);
+          nlohmann::json json;
 
-          if (group.empty()) {
-            Log(std::cout, "[]");
-            continue;
+          for (const Token& t : group) {
+            json.push_back(t.ToJSON());
           }
 
-          Log(std::cout, "[", 0);
-
-          for (decltype(group.size()) j = 0; j < group.size() - 1; ++j) {
-            Log(std::cout, "  " + group[j].ToString() + ", ", 0);
-          }
-
-          Log(std::cout, "  " + group.back().ToString(), 0);
-          Log(std::cout, "]\n}");
+          Log(std::cout, json.dump(2));
         }
       }
     }

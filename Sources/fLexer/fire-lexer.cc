@@ -110,10 +110,16 @@ std::set<std::string> Keywords { // NOLINT
   "scope"
 };
 
-std::string Token::ToString() const {
-  return R"({ "type": ")" + Properties[this->property] + R"(", "value": ")" +
-        this->text + R"(", "line": )" +
-         std::to_string(this->line) + R"(, "col": )" + std::to_string(this->col) + " }";
+nlohmann::json Token::ToJSON() const {
+  nlohmann::json temp_json;
+
+  temp_json["property"] = Properties[static_cast<int>(this->property)];
+  temp_json["text"] = this->text;
+  temp_json["file_name"] = this->filename;
+  temp_json["line"] = this->line;
+  temp_json["col"] = this->col;
+
+  return temp_json;
 }
 
 Lexer::Lexer(const std::string& filename) {

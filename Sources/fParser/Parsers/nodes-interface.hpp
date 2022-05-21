@@ -1,5 +1,6 @@
+
 // This file is a part of FireLang.
-// Copyright (c) 2020-2022, Ink. All rights reserved.
+// Copyright (c) 2022, Ink. All rights reserved.
 // License(MIT)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -21,16 +22,21 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "Sources/shared/global-functions.hpp"
+#ifndef FIRELANG_NODES_INTERFACE_HPP
+#define FIRELANG_NODES_INTERFACE_HPP
 
-//#define BUILDING
+#include "../../fLexer/fire-lexer.hpp"
 
-bool DEBUGGING = false;
-const char* BUILD_VER = "20220212";
+namespace fparser {
 
-int main(int argc, char** argv) {
+class Parser {
+ protected:
 
-  global::ProcessParams(argc, argv);
 
-  return 0;
-}
+ public:
+
+};
+
+} // namespace fparser
+
+#endif // FIRELANG_NODES_INTERFACE_HPP
