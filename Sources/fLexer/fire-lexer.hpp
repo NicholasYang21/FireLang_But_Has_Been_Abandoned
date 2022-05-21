@@ -24,6 +24,8 @@
 #ifndef FIRESCRIPT_FLEXER_HPP
 #define FIRESCRIPT_FLEXER_HPP
 
+#include "../../JSON/json.hpp"
+
 #include <string>
 #include <set>
 #include <fstream>
@@ -88,11 +90,12 @@ struct Token {
 
   unsigned line, col;
 
-  [[nodiscard]] std::string ToString() const;
+  [[nodiscard]] nlohmann::json ToJSON() const;
 };
 
 class Lexer {
  public:
+  Lexer() = default;
 
   explicit Lexer(const std::string& filename);
 
@@ -117,7 +120,7 @@ class Lexer {
   Token BlockComment();
   Token Symbol();
 
-  unsigned line, col, last_col;
+  unsigned line{}, col{}, last_col{};
 };
 
 } // namespace flexer

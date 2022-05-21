@@ -1,5 +1,5 @@
 // This file is a part of FireLang.
-// Copyright (c) 2020-2022, Ink. All rights reserved.
+// Copyright (c) 2022, Ink. All rights reserved.
 // License(MIT)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -21,16 +21,48 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "Sources/shared/global-functions.hpp"
+#ifndef FIRELANG_AST_HPP
+#define FIRELANG_AST_HPP
 
-//#define BUILDING
+#include "../fLexer/fire-lexer.hpp"
 
-bool DEBUGGING = false;
-const char* BUILD_VER = "20220212";
+#include "../../JSON/json.hpp"
 
-int main(int argc, char** argv) {
+#include <utility>
+#include <vector>
+#include <string>
 
-  global::ProcessParams(argc, argv);
+namespace ast {
 
-  return 0;
-}
+extern std::string Types[2];
+
+class AST {
+ public:
+  enum class TreeType : int {
+    Null,
+    Primary
+  } type;
+
+  flexer::Token curr_node;
+
+  std::vector<AST> children;
+
+  AST() : type{TreeType::Null}, curr_node{flexer::Unknown}, children{} {}
+
+  explicit AST(TreeType tree_type, flexer::Token tok) :
+    type{tree_type}, curr_node{std::move(tok)}, children{}
+  {}
+
+  explicit AST(TreeType tree_type, flexer::Token tok, std::vector<AST> children) :
+    type{tree_type}, curr_node{std::move(tok)}, children{std::move(children)}
+  {}
+
+  [[nodiscard]] bool IsLeaf() const;
+
+  [[nodiscard]] std::string ToString() const;
+  [[nodiscard]] nlohmann::json ToJSON() const;
+};
+
+} // namespace ast
+
+#endif // FIRELANG_AST_HPP

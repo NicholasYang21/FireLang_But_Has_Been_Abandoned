@@ -10,7 +10,7 @@ extern const char* BUILD_VER;
 #include <vector>
 
 #include "../fLexer/fire-lexer.hpp"
-#include "../fParser/AST/ast.hpp"
+#include "../fParser/AST.hpp"
 
 // color table
 #if defined(_WIN32) || defined(_WIN64)

@@ -1,5 +1,6 @@
+
 // This file is a part of FireLang.
-// Copyright (c) 2020-2022, Ink. All rights reserved.
+// Copyright (c) 2021-2022, Ink. All rights reserved.
 // License(MIT)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -21,16 +22,38 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "Sources/shared/global-functions.hpp"
+#include "AST.hpp"
 
-//#define BUILDING
+namespace ast {
 
-bool DEBUGGING = false;
-const char* BUILD_VER = "20220212";
+std::string Types[2] = { // NOLINT
+    "Null",
+    "Primary"
+};
 
-int main(int argc, char** argv) {
-
-  global::ProcessParams(argc, argv);
-
-  return 0;
+inline bool AST::IsLeaf() const {
+  return this->children.empty();
 }
+
+std::string AST::ToString() const {
+  return this->ToJSON().dump(2);
+}
+
+nlohmann::json AST::ToJSON() const {
+  ::nlohmann::json temp_json;
+
+  temp_json["type"] = Types[static_cast<int>(this->type)];
+  temp_json["curr_node"] = this->curr_node.ToJSON();
+
+  if (this->children.empty())
+    temp_json["children"] = {};
+  else {
+    for (const AST& i : this->children) {
+      temp_json["children"].push_back(i.ToJSON());
+    }
+  }
+
+  return temp_json;
+}
+
+} // namespace ast
