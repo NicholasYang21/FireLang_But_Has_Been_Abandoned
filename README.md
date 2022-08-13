@@ -1,3 +1,3 @@
 # Fire Programming Language
 
-The project has abandoned.
+The project has been abandoned.
